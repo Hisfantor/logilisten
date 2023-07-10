@@ -1,0 +1,78 @@
+/*classes added by js*/
+.red-row {
+  background-color: red; }
+
+.orange-row {
+  background-color: orange; }
+
+.green-row {
+  background-color: green; }
+
+/*Resets*/
+:focus {
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent; }
+
+/*styling*/
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 0;
+  font-family: "Roboto", sans-serif; }
+
+header {
+  position: sticky;
+  top: 0;
+  background: #333;
+  color: #fff;
+  clear: both; }
+  header .menu {
+    display: inline-block;
+    width: 50%; }
+    header .menu:first-child {
+      float: left; }
+    header .menu select {
+      width: 100%;
+      padding: 5px;
+      border: none;
+      background-color: #555;
+      color: #fff;
+      font-size: 1.5em;
+      text-align: center; }
+
+section {
+  padding: 2px 2px 2px 2px;
+  margin: 0 0 10px 0; }
+  section.getraenke {
+    background: #5aa9e6; }
+  section.eis {
+    backround: #7fc8f8; }
+  section.popkorn {
+    background: #ffe45e; }
+  section.becher {
+    background: #f9f9f9; }
+  section h2 {
+    margin: 10px 0 5px 0;
+    padding: 0 0 0 10px;
+    font-weight: 500; }
+  section table {
+    border-collapse: collapse;
+    width: calc(100% - 20px);
+    margin: 0 10px 10px 10px;
+    background: #d3d3d3;
+    font-size: 1.4em; }
+    section table td {
+      border: 1px solid black;
+      padding: 2px 0 2px 5px; }
+      section table td:nth-child(2) {
+        width: 80px;
+        padding: 0; }
+      section table td select {
+        font-size: 1.4em;
+        width: 100%;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        padding: 2px; }
+
+/*# sourceMappingURL=style.css.map */
