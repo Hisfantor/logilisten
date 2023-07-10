@@ -1,12 +1,12 @@
 /*classes added by js*/
 .red-row {
-  background-color: red; }
+  background-color: #ed7272; }
 
 .orange-row {
-  background-color: orange; }
+  background-color: #ff8100; }
 
 .green-row {
-  background-color: green; }
+  background-color: #40c140; }
 
 /*Resets*/
 :focus {
@@ -47,11 +47,13 @@ section {
   section.getraenke {
     background: #5aa9e6; }
   section.eis {
-    backround: #7fc8f8; }
+    background: #7fc8f8; }
   section.popkorn {
     background: #ffe45e; }
   section.becher {
-    background: #f9f9f9; }
+    background: #a0acb3; }
+  section.specialwein {
+    background: #cd6982; }
   section h2 {
     margin: 10px 0 5px 0;
     padding: 0 0 0 10px;
