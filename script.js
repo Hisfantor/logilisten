@@ -35,7 +35,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		table.appendChild(tbody);
 		list.parentNode.replaceChild(table, list);
 	});
-//--------------------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------------------
 	// Get references to the select elements and sections
 	const select1 = document.getElementById("ort");
 	const select2 = document.getElementById("art");
@@ -43,58 +43,62 @@ window.addEventListener("DOMContentLoaded", function () {
 
 	// Function to show/hide sections based on the selected values
 	function updateSections() {
-		const selectedValue1 = select1.value;
-		const selectedValue2 = select2.value;
+  const selectedValue1 = select1.value;
+  const selectedValue2 = select2.value;
 
-		sections.forEach((section) => {
-			const sectionClasses = section.classList;
+  sections.forEach((section) => {
+    const sectionClasses = section.classList;
 
-			if (
-				(selectedValue1 === "all" || sectionClasses.contains(selectedValue1)) &&
-				(selectedValue2 === "all" || sectionClasses.contains(selectedValue2))
-			) {
-				section.style.display = "block";
-			} else {
-				section.style.display = "none";
-			}
-		});
-	}
+    if (
+      (selectedValue1 === "all" || sectionClasses.contains(selectedValue1)) &&
+      (selectedValue2 === "all" || sectionClasses.contains(selectedValue2))
+    ) {
+      section.style.display = "block";
+    } else {
+      section.style.display = "none";
+    }
+  });
 
-	// Attach event listeners to the select elements
-	select1.addEventListener("change", updateSections);
-	select2.addEventListener("change", updateSections);
+  // Store selected values in local storage
+  localStorage.setItem("selectedValue1", selectedValue1);
+  localStorage.setItem("selectedValue2", selectedValue2);
+}
 
-	// Initially show all sections
-	sections.forEach((section) => {
-		section.style.display = "block";
-	});
-//--------------------------------------------------------------------------------------------
+// Attach event listeners to the select elements
+select1.addEventListener("change", updateSections);
+select2.addEventListener("change", updateSections);
+
+// Get stored values from local storage or set default values
+const storedValue1 = localStorage.getItem("selectedValue1") || "all";
+const storedValue2 = localStorage.getItem("selectedValue2") || "all";
+
+// Set the stored values as selected options
+select1.value = storedValue1;
+select2.value = storedValue2;
+
+// Initially update sections based on stored values
+updateSections();
+
+// Initially show all sections
+
+	//--------------------------------------------------------------------------------------------
 	// farben ändern jeh nach zahl und klicken
-	sections.forEach((section) => {
-		const numberSelectors = section.querySelectorAll("select");
-
-		numberSelectors.forEach((numberSelector) => {
-			numberSelector.addEventListener("change", function () {
-				const row = this.parentNode.parentNode;
-
-				if (this.value !== "0") {
-					row.classList.add("red-row");
-					row.classList.remove("orange-row");
-					row.classList.remove("green-row");
-				} else {
-					row.classList.remove("red-row");
-					row.classList.remove("orange-row");
-					row.classList.remove("green-row");
-				}
-			});
-		});
-	});
 
 	const rows = document.querySelectorAll("tr");
-
 	rows.forEach((row) => {
+		const section = row.closest("section");
+		const sectionclass = Array.from(section.classList)
+			.filter((className) => className !== "section")
+			.join("-");
+
 		const firstCell = row.querySelector("td:first-child");
 		const numberSelector = row.querySelector("select");
+		const name = firstCell.textContent;
+
+		function updateStorage() {
+			localStorage.setItem(`N-${sectionclass}-${name}`, numberSelector.value);
+			localStorage.setItem(`C-${sectionclass}-${name}`, row.classList.value);
+		}
 
 		firstCell.addEventListener("click", function () {
 			if (row.classList.contains("orange-row")) {
@@ -106,7 +110,89 @@ window.addEventListener("DOMContentLoaded", function () {
 				row.classList.remove("red-row");
 			} else if (row.classList.contains("red-row")) {
 				row.classList.add("orange-row");
+				row.classList.remove("red-row");
 			}
+			updateStorage();
+		});
+
+		numberSelector.addEventListener("change", function () {
+			const row = this.parentNode.parentNode;
+
+			if (this.value !== "0") {
+				row.classList.add("red-row");
+				row.classList.remove("orange-row");
+				row.classList.remove("green-row");
+			} else {
+				row.classList.remove("red-row");
+				row.classList.remove("orange-row");
+				row.classList.remove("green-row");
+			}
+			updateStorage();
 		});
 	});
+
+	function reapplySavedValues() {
+		const rows = document.querySelectorAll("tr");
+		rows.forEach((row) => {
+			const section = row.closest("section");
+			const sectionclass = Array.from(section.classList)
+				.filter((className) => className !== "section")
+				.join("-");
+
+			const firstCell = row.querySelector("td:first-child");
+			const numberSelector = row.querySelector("select");
+			const name = firstCell.textContent;
+
+			// Retrieve the stored values from the local storage
+			const storedNumberValue = localStorage.getItem(`N-${sectionclass}-${name}`);
+			const storedClassValue = localStorage.getItem(`C-${sectionclass}-${name}`);
+
+			// Update the numberSelector value
+			if (storedNumberValue !== null) {
+				numberSelector.value = storedNumberValue;
+			}
+
+			// Update the row classList value
+			if (storedClassValue !== null) {
+				row.classList.value = storedClassValue;
+			}
+		});
+	}
+
+	// Call the reapplySavedValues function after the page has finished loading
+	window.addEventListener("load", reapplySavedValues);
+
+	function resetValues() {
+		// Ask for confirmation before resetting
+		const confirmed = window.confirm(
+			"Bist du dir sicher, dass du alle LogiListen zurücksetzen möchtest?"
+		);
+
+		if (confirmed) {
+			const rows = document.querySelectorAll("tr");
+			rows.forEach((row) => {
+				const section = row.closest("section");
+				const sectionclass = Array.from(section.classList)
+					.filter((className) => className !== "section")
+					.join("-");
+
+				const firstCell = row.querySelector("td:first-child");
+				const numberSelector = row.querySelector("select");
+				const name = firstCell.textContent;
+
+				// Reset the numberSelector value to 0
+				numberSelector.value = "0";
+
+				// Remove the row classes
+				row.classList.remove("red-row", "orange-row", "green-row");
+			});
+
+			// Clear all items from local storage
+			localStorage.clear();
+		}
+	}
+
+	// Create a reset button
+	const resetButton = document.getElementById("reset");
+	resetButton.addEventListener("click", resetValues);
 });

@@ -27,11 +27,20 @@ header {
   background: #333;
   color: #fff;
   clear: both; }
+  header a {
+    width: 70px;
+    padding: 5px;
+    margin: 0;
+    display: inline-block;
+    border: 0;
+    text-align: center;
+    cursor: pointer;
+    font-size: 1.5em;
+    float: left;
+    height: 29px; }
   header .menu {
     display: inline-block;
-    width: 50%; }
-    header .menu:first-child {
-      float: left; }
+    width: calc(50% - 43px); }
     header .menu select {
       width: 100%;
       padding: 5px;
