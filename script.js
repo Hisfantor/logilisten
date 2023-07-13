@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", function () {
 			var cell2 = document.createElement("td");
 			var select = document.createElement("select");
 
-			for (var j = 0; j <= 10; j++) {
+			for (var j = 0; j <= 14; j++) {
 				var option = document.createElement("option");
 				option.text = j;
 				option.value = j;
@@ -43,43 +43,43 @@ window.addEventListener("DOMContentLoaded", function () {
 
 	// Function to show/hide sections based on the selected values
 	function updateSections() {
-  const selectedValue1 = select1.value;
-  const selectedValue2 = select2.value;
+		var selectedValue1 = select1.value;
+		var selectedValue2 = select2.value;
 
-  sections.forEach((section) => {
-    const sectionClasses = section.classList;
+		sections.forEach((section) => {
+			const sectionClasses = section.classList;
 
-    if (
-      (selectedValue1 === "all" || sectionClasses.contains(selectedValue1)) &&
-      (selectedValue2 === "all" || sectionClasses.contains(selectedValue2))
-    ) {
-      section.style.display = "block";
-    } else {
-      section.style.display = "none";
-    }
-  });
+			if (
+				(selectedValue1 === "all" || sectionClasses.contains(selectedValue1)) &&
+				(selectedValue2 === "all" || sectionClasses.contains(selectedValue2))
+			) {
+				section.style.display = "block";
+			} else {
+				section.style.display = "none";
+			}
+		});
 
-  // Store selected values in local storage
-  localStorage.setItem("selectedValue1", selectedValue1);
-  localStorage.setItem("selectedValue2", selectedValue2);
-}
+		// Store selected values in local storage
+		localStorage.setItem("selectedValue1", selectedValue1);
+		localStorage.setItem("selectedValue2", selectedValue2);
+	}
 
-// Attach event listeners to the select elements
-select1.addEventListener("change", updateSections);
-select2.addEventListener("change", updateSections);
+	// Attach event listeners to the select elements
+	select1.addEventListener("change", updateSections);
+	select2.addEventListener("change", updateSections);
 
-// Get stored values from local storage or set default values
-const storedValue1 = localStorage.getItem("selectedValue1") || "all";
-const storedValue2 = localStorage.getItem("selectedValue2") || "all";
+	// Get stored values from local storage
+	const storedValue1 = localStorage.getItem("selectedValue1");
+	const storedValue2 = localStorage.getItem("selectedValue2");
 
-// Set the stored values as selected options
-select1.value = storedValue1;
-select2.value = storedValue2;
+	// Set the stored values as selected options
+	select1.value = storedValue1;
+	select2.value = storedValue2;
 
-// Initially update sections based on stored values
-updateSections();
+	// Initially update sections based on stored values
+	updateSections();
 
-// Initially show all sections
+	// Initially show all sections
 
 	//--------------------------------------------------------------------------------------------
 	// farben ändern jeh nach zahl und klicken
@@ -195,4 +195,30 @@ updateSections();
 	// Create a reset button
 	const resetButton = document.getElementById("reset");
 	resetButton.addEventListener("click", resetValues);
+});
+
+// Get the save button element
+var saveButton = document.getElementById("save-button");
+
+// Add a click event listener to the save button
+saveButton.addEventListener("click", function () {
+	// Use HTML2Canvas to capture the page content
+	html2canvas(document.body).then(function (canvas) {
+		// Convert the canvas to an image URL
+		var imgData = canvas.toDataURL("image/png");
+
+		// Create a temporary link element
+		var link = document.createElement("a");
+		link.href = imgData;
+
+		// Set the filename for the downloaded image
+		const ort = document.getElementById("ort").value;
+		const art = document.getElementById("art").value;
+		var currentDate = new Date();
+		link.download =
+			currentDate.toISOString().slice(0, 10) + "-" + ort + "-" + art + ".png";
+
+		// Programmatically trigger the download
+		link.click();
+	});
 });

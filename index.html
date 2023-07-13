@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="script.js"></script>
+	<meta name="description" content="interaktive Listen um das Tagesgeschäft zu erleichtern.">
+	<meta name="keywords" content="Logistik, Listen, Produktivität">
+	<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 <link rel="stylesheet" type='text/css' href='style.css'>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<meta name="title" content="LogiListen">
 	<title>LogiListen</title>
 </head>
 <body>
 <header>
-	<a id="reset">Reset</a>
-	<div class="menu">
+		<a id="reset">Reset</a>
 		<select id="ort">
 			<option value="all">alle</option>
 			<option value="carolatheke">Carolatheke</option>
@@ -21,8 +24,6 @@
 			<option value="prestige">Prestige</option>
 			<option value="scenestar">Scene Star</option>
 		</select>
-	</div>
-	<div class="menu">
 		<select id="art">
 			<option value="all">alle</option>
 			<option value="getraenke">Getränke</option>
@@ -31,9 +32,9 @@
 			<option value="eis">Eis</option>
 			<option value="specialwein">Specialwein</option>
 		</select>
-	</div>
-	
-</header>
+		<a id="save-button">Save</a>
+
+	</header>
 <!--Carolatheke-->
 <section class="getraenke carolatheke">
 	<h2>Carolatheke Getränke</h2>
@@ -45,7 +46,7 @@
 <li>Schöfferhofer Grapefruit</li>
 <li>Schöfferhofer Grapefruit 0%</li>
 <li>Wasser Spritzig</li>
-<li>Wasser Still</li>
+<li>Wasser Naturell</li>
 <li>Cola</li>
 <li>ZitronenBrause</li>
 <li>HimbeerBrause</li>
@@ -53,17 +54,31 @@
 <li>Apfelschorle</li>
 <li>RabarberBrause</li>
 <li>Mate</li>
+<li>Red Bull</li>
+<li>Red Bull Red</li>
 <li>Bananensaft</li>
 <li>Kirschsaft</li>
 <li>Orangensaft</li>
-<li>Wein Rivana</li>
-<li>Wein Rose</li>
+<li>Wein Hirsch Rivana</li>
+<li>Wein Hirsch Rose</li>
+<li>Prosecco Mionetto</li>
+<li>Schweppes Tonic</li>
+<li>Schweppes Ginger Ale</li>
+<li>Schweppes Ginger Beer</li>
+<li>Schweppes Wild Berry</li>
 	</ul>
 </section>
 <section class="specialwein carolatheke">
 	<h2>Carolatheke Spezialweine</h2>
 	<ul>
-		
+		<li>DLY Rose Cuvee La Gazelle</li>
+<li>HOF Cuvee H Rose</li>
+<li>Essere Cesari Rosato Trevenezie</li>
+<li>KIHU Grauer Burgunder</li>
+<li>KÖW Einblick No. I Riesling</li>
+<li>SW Edition Canaletto</li>
+<li>DLY Saint Felix</li>
+<li>Menger-Krug Rosé Sekt</li>
 	</ul>
 </section>
 <section class="eis carolatheke">
@@ -101,7 +116,7 @@
 <li>Schöfferhofer Grapefruit</li>
 <li>Schöfferhofer Grapefruit 0%</li>
 <li>Wasser Spritzig</li>
-<li>Wasser Still</li>
+<li>Wasser Naturell</li>
 <li>Cola</li>
 <li>ZitronenBrause</li>
 <li>HimbeerBrause</li>
@@ -109,17 +124,31 @@
 <li>Apfelschorle</li>
 <li>RabarberBrause</li>
 <li>Mate</li>
+<li>Red Bull</li>
+<li>Red Bull Red</li>
 <li>Bananensaft</li>
 <li>Kirschsaft</li>
 <li>Orangensaft</li>
-<li>Wein Rivana</li>
-<li>Wein Rose</li>
+<li>Wein Hirsch Rivana</li>
+<li>Wein Hirsch Rose</li>
+<li>Prosecco Mionetto</li>
+<li>Schweppes Tonic</li>
+<li>Schweppes Ginger Ale</li>
+<li>Schweppes Ginger Beer</li>
+<li>Schweppes Wild Berry</li>
 	</ul>
 </section>
 <section class="specialwein augustustheke">
 	<h2>Augustustheke Spezialweine</h2>
 	<ul>
-		
+<li>DLY Rose Cuvee La Gazelle</li>
+<li>HOF Cuvee H Rose</li>
+<li>Essere Cesari Rosato Trevenezie</li>
+<li>KIHU Grauer Burgunder</li>
+<li>KÖW Einblick No. I Riesling</li>
+<li>SW Edition Canaletto</li>
+<li>DLY Saint Felix</li>
+<li>Menger-Krug Rosé Sekt</li>
 	</ul>
 </section>
 <section class="eis augustustheke">
@@ -157,7 +186,7 @@
 <li>Schöfferhofer Grapefruit</li>
 <li>Schöfferhofer Grapefruit 0%</li>
 <li>Wasser Spritzig</li>
-<li>Wasser Still</li>
+<li>Wasser Naturell</li>
 <li>Cola</li>
 <li>ZitronenBrause</li>
 <li>HimbeerBrause</li>
@@ -165,11 +194,14 @@
 <li>Apfelschorle</li>
 <li>RabarberBrause</li>
 <li>Mate</li>
+<li>Red Bull</li>
+<li>Red Bull Red</li>
 <li>Bananensaft</li>
 <li>Kirschsaft</li>
 <li>Orangensaft</li>
-<li>Wein Rivana</li>
-<li>Wein Rose</li>
+<li>Wein Hirsch Rivana</li>
+<li>Wein Hirsch Rose</li>
+<li>Prosecco Mionetto</li>
 	</ul>
 </section>
 <section class="becher scenestar">
@@ -192,7 +224,7 @@
 <li>Schöfferhofer Grapefruit</li>
 <li>Schöfferhofer Grapefruit 0%</li>
 <li>Wasser Spritzig</li>
-<li>Wasser Still</li>
+<li>Wasser Naturell</li>
 <li>Cola</li>
 <li>ZitronenBrause</li>
 <li>HimbeerBrause</li>
@@ -200,11 +232,14 @@
 <li>Apfelschorle</li>
 <li>RabarberBrause</li>
 <li>Mate</li>
+<li>Red Bull</li>
+<li>Red Bull Red</li>
 <li>Bananensaft</li>
 <li>Kirschsaft</li>
 <li>Orangensaft</li>
-<li>Wein Rivana</li>
-<li>Wein Rose</li>
+<li>Wein Hirsch Rivana</li>
+<li>Wein Hirsch Rose</li>
+<li>Prosecco Mionetto</li>
 	</ul>
 </section>
 <section class="becher prestige">
@@ -237,5 +272,6 @@
 		<li>Käse (4)</li>
 	</ul>
 </section>
+	<script src="script.js"></script>
 </body>
 </html>
