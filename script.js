@@ -73,8 +73,8 @@ window.addEventListener("DOMContentLoaded", function () {
 	const storedValue2 = localStorage.getItem("selectedValue2");
 
 	// Set the stored values as selected options
-	select1.value = storedValue1;
-	select2.value = storedValue2;
+	select1.value = storedValue1 || "all";
+	select2.value = storedValue2 || "all";
 
 	// Initially update sections based on stored values
 	updateSections();
@@ -104,10 +104,10 @@ window.addEventListener("DOMContentLoaded", function () {
 			if (row.classList.contains("orange-row")) {
 				row.classList.remove("orange-row");
 				row.classList.add("green-row");
-				numberSelector.value = "0";
 			} else if (row.classList.contains("green-row")) {
 				row.classList.remove("green-row");
 				row.classList.remove("red-row");
+				numberSelector.value = "0";
 			} else if (row.classList.contains("red-row")) {
 				row.classList.add("orange-row");
 				row.classList.remove("red-row");
@@ -192,7 +192,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 
-	// Create a reset button
+	// get a reset button
 	const resetButton = document.getElementById("reset");
 	resetButton.addEventListener("click", resetValues);
 });
