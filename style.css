@@ -59,15 +59,17 @@ section {
   padding: 2px 2px 2px 2px;
   margin: 0 0 10px 0; }
   section.getraenke {
-    background: #5aa9e6; }
+    background: #5aa4dd; }
   section.eis {
     background: #7fc8f8; }
   section.popkorn {
-    background: #ffe45e; }
+    background: #ffc875; }
   section.becher {
     background: #a0acb3; }
   section.specialwein {
-    background: #cd6982; }
+    background: #e595a9; }
+section.co2 {
+    background: #b9e1ed; }
   section h2 {
     margin: 10px 0 5px 0;
     padding: 0 0 0 5px;
